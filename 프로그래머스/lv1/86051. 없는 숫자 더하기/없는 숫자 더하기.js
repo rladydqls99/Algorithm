@@ -1,14 +1,10 @@
+
 function solution(numbers) {
-    var answer = 0
-    var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    var diff = []
+    let answer = 0;
 
-    diff = arr.filter((element) => !numbers.includes(element))
-    
-    diff.forEach((a) =>{
-        answer += Number(a)
-    })
-    
-    return answer
+    for(let i = 0; i <= 9; i++) {
+        if(!numbers.includes(i)) answer += i;
+    }
 
+    return answer;
 }
