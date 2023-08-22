@@ -1,11 +1,9 @@
 function solution(n) {
-    var answer = '';
-    var w = "수박"
-    for(let i=0; i<n/2; i++){
-        answer += w  
-    }
-    if(n%2 !==0){
-        answer = answer.slice(0, -1)
-    }
-    return answer;
+  // n이 홀수일 때 수/박/ 짝수일때 수박
+  const wM = n%2===0 ? "수박": "수박"
+    
+  // n을 2로 나눠 주고 나머지가 있으면 '수' 를 더해주기
+  let answer = n%2===0 ? wM.repeat(n/2) : wM.repeat(n/2) + "수"
+  
+  return answer;
 }
