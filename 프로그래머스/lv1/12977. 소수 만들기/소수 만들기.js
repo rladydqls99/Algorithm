@@ -1,12 +1,12 @@
 function solution(nums) {
     let result = 0
     
-    for(let i=0; i<nums.length; i++){
+    for(let i=0; i<nums.length-2; i++){
         let sum = 0
         let fiexd1 = nums[i]
        
         
-        for(let j=i+1; j<nums.length; j++){
+        for(let j=i+1; j<nums.length-1; j++){
             let fiexd2 = nums[j]
         
             for(let k=j+1; k<nums.length; k++){
