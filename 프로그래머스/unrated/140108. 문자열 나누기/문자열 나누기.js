@@ -4,9 +4,9 @@ function solution(s) {
     let arr1 = []
     // 2. 첫 번째 글자와 다른 글자를 담는 배열 생성
     let arr2 = []
-    let j = 0
+    let startIdx = 0
     for(let i=0; i<s.length; i++){
-        let first = s[0 +j]  
+        let first = s[startIdx]  
         if(first === s[i]){
             arr1.push(s[i])
         }else{
@@ -16,11 +16,12 @@ function solution(s) {
         // 4. 비교해서 다르면 다음 반복문 진행
         if(arr1.length === arr2.length){
             answer += 1
-            j = i +1
+            startIdx = i +1
             arr1 = []
             arr2 = []
         }
     }
+    // 반복문이 끝난후 배열에 요소가 있을 경우 answer + 1
     if(arr1.length !==0){
         answer += 1
     }
