@@ -15,6 +15,5 @@ function solution(s, n) {
         }
         newString += newText[idx]
     }
-    console.log(newString)
     return newString;
 }
