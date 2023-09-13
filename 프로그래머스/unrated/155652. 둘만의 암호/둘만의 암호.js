@@ -7,21 +7,11 @@ function solution(s, skip, index) {
     }
     for(j=0; j<s.length; j++){
         let idx = texts.indexOf(s[j]) + index
-        if(idx >= texts.length){
-            idx -= texts.length
-        }
-        if(idx >= texts.length){
-            idx -= texts.length
-        }
-        if(idx >= texts.length){
-            idx -= texts.length
-        }
-        if(idx >= texts.length){
+        while(idx >= texts.length){
             idx -= texts.length
         }
         result += texts[idx]
     }
-    
     
    return result;
 }
