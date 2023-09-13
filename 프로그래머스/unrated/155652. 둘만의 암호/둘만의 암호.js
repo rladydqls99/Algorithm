@@ -1,17 +1,8 @@
+
+
 function solution(s, skip, index) {
-    let result = ''
-    let texts ='abcdefghijklmnopqrstuvwxyz'
-    
-    for(i=0; i<skip.length; i++){
-        texts = texts.includes(skip[i]) ? texts.replace(skip[i],'') : texts
-    }
-    for(j=0; j<s.length; j++){
-        let idx = texts.indexOf(s[j]) + index
-        while(idx >= texts.length){
-            idx -= texts.length
-        }
-        result += texts[idx]
-    }
-    
-   return result;
+    const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", 
+                      "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", 
+                      "u", "v", "w", "x", "y", "z"].filter(c => !skip.includes(c));
+    return s.split("").map(c => alphabet[(alphabet.indexOf(c) + index) % alphabet.length]).join("");
 }
