@@ -1,32 +1,38 @@
+// 1. array[i]에서 #이 가장 먼저 나오는 줄이 result[0]
+// 2. array[i][j] 중 j 최소값이 result[1]
+// 3. array[i]에서 #이 가장 마지막에 나오는 줄이 result[2]
+// 4. array[i][j] 중 j 최대값이 result[3]
+
 function solution(wallpaper) {
-  const rows = wallpaper.length;
-  const cols = wallpaper[0].length;
-
-  let minX = cols; // 초기화
-  let maxX = -1; // 초기화
-  let minY = rows; // 초기화
-  let maxY = -1; // 초기화
-
-  // 파일이 있는 영역을 찾습니다.
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < cols; j++) {
-      if (wallpaper[i][j] === '#') {
-        minX = Math.min(minX, j);
-        maxX = Math.max(maxX, j);
-        minY = Math.min(minY, i);
-        maxY = Math.max(maxY, i);
-      }
+    var answer = [];
+    let lux = wallpaper.length
+    let rdx = 0
+    let luy = wallpaper[0].length
+    let rdy = 0
+    for(let i=0; i<wallpaper.length; i++){
+        if(wallpaper[i].includes('#') && i < lux){
+            lux = i
+        }
+        if(wallpaper[i].includes('#') && i >= rdx){
+            rdx = i
+        }
+        if(wallpaper[i].includes('#') && wallpaper[i].indexOf('#') <luy){
+            luy = wallpaper[i].indexOf('#')
+        }
+        let maxRdy = 0
+        for(let j=0; j<wallpaper[i].length; j++){
+            if(wallpaper[i][j] === '#' && j >= maxRdy){
+                maxRdy = j
+            }
+            if(maxRdy > rdy){
+            rdy = maxRdy
+            }
+        }
     }
-  }
-
-  // 파일이 없으면 아무런 작업을 하지 않습니다.
-  if (minX === cols || minY === rows) {
-    return [0, 0, 0, 0]; // 아무 작업도 안했으므로 [0, 0, 0, 0] 반환
-  }
-
-  // 드래그 한 거리를 계산합니다.
-  const distance = [minY, minX, maxY+1, maxX+1];
-
-  return distance;
+    answer.push(lux)
+    answer.push(luy)
+    answer.push(rdx+1)
+    answer.push(rdy+1)
+    
+    return answer;
 }
-
