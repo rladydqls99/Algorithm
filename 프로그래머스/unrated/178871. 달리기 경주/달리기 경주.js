@@ -1,21 +1,15 @@
 function solution(players, callings) {
-    const keyPlayers = {}
-    const keyRanks = {}
-    players.forEach((player,idx)=>{
-        const rank = idx+1
-        keyPlayers[player] = rank
-        keyRanks[rank] = player
-    })
+    const rank = {};
+    players.forEach((v,i) => rank[v] = i);
+    for(const winner of callings){
+        let winnerI = rank[winner];
+        let loserI = winnerI - 1;
 
-    callings.forEach((calling)=>{
-        const losePlayer = keyRanks[keyPlayers[calling]-1]
+        rank[winner] -= 1;
+        rank[players[loserI]] +=1;
 
-        keyRanks[keyPlayers[calling]] = losePlayer
-        keyRanks[keyPlayers[losePlayer]] = calling
-        keyPlayers[calling] -= 1
-        keyPlayers[losePlayer] += 1
-    })
-
-
-    return Object.values(keyRanks)
+        players[winnerI] = players[loserI];
+        players[loserI] = winner;
+    }
+    return players;
 }
