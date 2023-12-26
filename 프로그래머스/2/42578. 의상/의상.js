@@ -1,7 +1,6 @@
 function solution(clothes) {
     var answer = 1;
     let clothesMap = new Map()
-    let count = 1
     
     clothes.forEach(clothe =>{
         clothesMap.set(clothe[1], (clothesMap.get(clothe[1]) || 0) + 1)
