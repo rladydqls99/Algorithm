@@ -1,28 +1,21 @@
 function solution(genres, plays) {
-    var answer = [];
-    const genreMap = {}
-    const totalMap = {}
-    
-    for (let i=0; i<genres.length; i++){
-        let genre = genres[i]
-        let play = plays[i]
-        
-        if(!genreMap[genre]){
-            genreMap[genre] = []
-            totalMap[genre] = 0
-        }
-        
-        genreMap[genre].push({id:i, play:play})
-        totalMap[genre] += play
-    }
-    
-    const sortedGenres = Object.entries(totalMap).sort((a, b) => b[1] - a[1]).map(genre => genre[0])
-    
-    sortedGenres.forEach(genre => {
-        genreMap[genre].sort((a, b) => b.play - a.play || a.id - b.id);
-        
-        answer.push(...genreMap[genre].slice(0, 2).map(song => song.id));
+    var dic = {};
+    genres.forEach((t,i)=> {
+        dic[t] = dic[t] ?  dic[t] + plays[i] :plays[i];        
     });
-   
-    return answer;
+
+    var dupDic = {};
+    return genres          
+          .map((t,i)=> ({genre : t, count:plays[i] , index:i}))
+          .sort((a,b)=>{               
+               if(a.genre !== b.genre) return dic[b.genre] - dic[a.genre];
+               if(a.count !== b.count) return b.count - a.count;
+               return a.index - b.index;
+           })
+           .filter(t=>  {
+               if(dupDic[t.genre] >= 2) return false;
+               dupDic[t.genre] = dupDic[t.genre] ? dupDic[t.genre]+ 1 : 1;
+               return true;
+            })
+           .map(t=> t.index);    
 }
