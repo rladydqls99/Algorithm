@@ -1,3 +1,3 @@
 def solution(names):
-    answer = names[0::5]
+    answer = names[::5]
     return answer
