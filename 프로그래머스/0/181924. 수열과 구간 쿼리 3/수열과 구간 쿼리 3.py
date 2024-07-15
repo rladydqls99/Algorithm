@@ -1,7 +1,4 @@
 def solution(arr, queries):
-    
-    for i in queries:
-        beforeNum = arr[i[0]]
-        arr[i[0]] = arr[i[1]]
-        arr[i[1]] = beforeNum
+    for a, b in queries:
+        arr[a], arr[b] = arr[b], arr[a]
     return arr
