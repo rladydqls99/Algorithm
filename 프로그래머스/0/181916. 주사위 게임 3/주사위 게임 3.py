@@ -7,15 +7,15 @@ def solution(a, b, c, d):
     
     if len(numberSet) == 1:
         return 1111 * maxNumber
-    if len(numberSet) == 2:
+    elif len(numberSet) == 2:
         newList = list(numberSet)
         if numberArr.count(a) == 3 or numberArr.count(b) == 3 :
             return (10 * maxNumber + minNumber)**2
         else:
             return (newList[0] + newList[1]) * abs(newList[0] - newList[1])
-    if len(numberSet) == 3:
+    elif len(numberSet) == 3:
         numberSet.remove(maxNumber)
         newList = list(numberSet)
         return newList[0] * newList[1]
-    if len(numberSet) == 4:
+    else:
         return min(numberSet)
