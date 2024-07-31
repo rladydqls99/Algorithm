@@ -5,5 +5,4 @@ def solution(my_string):
         answer.append(my_string)
         my_string = my_string[1:]
 
-    answer.sort() 
-    return answer
+    return sorted(answer)
