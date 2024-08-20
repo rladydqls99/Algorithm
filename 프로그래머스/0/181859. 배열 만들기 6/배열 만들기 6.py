@@ -4,9 +4,9 @@ def solution(arr):
     
     while len(arr) > len(answer):
         if len(arr) <= i:
-            return answer if len(answer) != 0 else [-1]
+            return answer or [-1]
         
-        if len(answer) == 0:
+        if not answer:
             answer.append(arr[i])
         else:
             if answer[-1] == arr[i]:
@@ -14,4 +14,4 @@ def solution(arr):
             else:
                 answer.append(arr[i])
         i += 1
-    return answer if len(answer) != 0 else [-1]
+    return answer or [-1]
