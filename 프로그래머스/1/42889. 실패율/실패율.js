@@ -9,6 +9,7 @@ function solution(N, stages) {
             obj[stages[i]] = 1
         }
     }
+    
     let totalCnt = stages.length
     for (let i=1; i<=N; i++){
         let successCnt = 0
@@ -18,10 +19,8 @@ function solution(N, stages) {
         answer.push([i, successCnt/totalCnt])
         totalCnt -= successCnt
     }
-    const newAnswer = []
+    
     answer = answer.sort((a,b) => b[1] - a[1])
-    answer.forEach(key => {
-        newAnswer.push(key[0])
-    })
-    return newAnswer;
+  
+    return answer.map(a => a[0]);
 }
